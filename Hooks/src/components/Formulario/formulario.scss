@@ -1,0 +1,28 @@
+form {
+  background-color: rgb(240, 240, 245);
+  margin: 2em;
+  padding: 1em;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.form-row {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 0.6em;
+}
+.form-row label {
+  margin: 0 0.6em;
+}
+.form-button {
+  width: 100%;
+  border: none;
+  font-weight: bold;
+  padding: 0.4em;
+  border-radius: 5px;
+  background-color: rgb(68, 71, 95);
+  color: white;
+}
+.form-button:hover {
+  transform: Scale(0.95);
+}

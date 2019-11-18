@@ -1,0 +1,73 @@
+.card {
+  background-color: rgb(255, 255, 255);
+  padding: 0.4em;
+  color: rgb(0, 0, 0);
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8em;
+  color: grey;
+}
+.form-row label {
+  width: 180px;
+  text-align: left;
+  font-weight: 500;
+}
+.form-row input,
+.textArea,
+.form-button {
+  border-radius: 5px;
+  border: 1px solid rgb(211, 211, 211);
+  padding: 0.2em;
+  width: 300px;
+  margin-right: 40px;
+}
+.textArea {
+  max-width: 200px;
+  min-width: 200px;
+  max-height: 200px;
+}
+.form-button {
+  background-color: rgb(0, 168, 70);
+  color: white;
+  border: none;
+
+  margin: 1em 0;
+  padding: 1em 0;
+  width: 100%;
+}
+.form-button:hover {
+  transform: scale(0.95);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+}
+.alerta {
+  background-color: rgb(221, 18, 35);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 1em 0;
+  padding: 1em 0;
+  width: 100%;
+}
+/* ---------------------listacitas */
+.listacitas {
+  background-color: rgb(255, 255, 255);
+  padding: 0.4em;
+  color: grey;
+  text-align: left;
+}
+.mt {
+  margin-top: 1em;
+  padding-bottom: 1em;
+}
+.separador {
+  background-color: wheat;
+  margin: 0.4em;
+  padding: 0.2em;
+}
+
+.red {
+  background-color: rgb(221, 18, 35);
+}

@@ -1,0 +1,18 @@
+// importacion de todos los scss
+// @import '';
+@import "./App.scss";
+@import "./Components/Header/header.scss";
+@import "./Components/Formulario/formulario.scss";
+@import "./Components/Evento/evento.scss";
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #e2e0e2;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}

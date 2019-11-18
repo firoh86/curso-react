@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  // width: 100%;
+  margin: 0 auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex-wrap: wrap;
+}
+.form-title {
+  color: rgb(100, 100, 100);
+  margin: 1em;
+}
+.form-column {
+  min-width: 30%;
+  margin: 0.4em 1em;
+}
+.form-button,
+.form-select,
+.form-input {
+  width: 100%;
+  border: none;
+  padding: 0.4em;
+}
+.form-button {
+  color: white;
+  background: #ea3141;
+}
+.form-button:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+}

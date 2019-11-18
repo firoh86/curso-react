@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  background-color: rgb(27, 27, 27);
+  padding: 1em;
+}
+.navbar-link {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 0 2em;
+}
+.navbar-link:hover {
+  transform: scale(0.95);
+}

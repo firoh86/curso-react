@@ -1,0 +1,8 @@
+.form-title {
+  color: rgb(9, 63, 107);
+}
+.formulary {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+}

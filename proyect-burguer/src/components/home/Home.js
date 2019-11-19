@@ -18,17 +18,19 @@ class Home extends Component {
     mostrar: false
   };
 
-  cambiaNumero = numero => {
+  cambiaNumero = (numero, e) => {
     this.setState({
       mensaje2: this.state.mensaje.mensajes[numero]
     });
+    console.log(this.state.mensaje2);
   };
+
   HandleMostrar = e => {
     this.setState({
       mostrar: e
     });
-    console.log(e.toString());
   };
+
   render() {
     return (
       <div className="container">
@@ -38,9 +40,7 @@ class Home extends Component {
             Las mejores hamburguesas de todo el pais ahora a tu alcance desde la
             web!
           </p>
-          <h2 className="parrafo bottom">
-            {this.state.mostrar ? this.state.mensaje2 : ""}
-          </h2>
+
           <div
             className="burguer-frame"
             onMouseEnter={() => this.HandleMostrar(true)}
@@ -75,6 +75,9 @@ class Home extends Component {
               onMouseEnter={() => this.cambiaNumero(6)}
             ></div>
           </div>
+          <h2 className="parrafo bottom">
+            {this.state.mostrar ? this.state.mensaje2 : ""}
+          </h2>
         </div>
       </div>
     );

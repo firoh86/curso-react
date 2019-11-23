@@ -1,86 +1,29 @@
 import React, { Component } from "react";
-
+import image1 from "../images/burguer1.png";
+import image2 from "../images/burguer2.png";
+import image3 from "../images/burguer3.png";
+import image4 from "../images/burguer4.png";
+import Info from "../info/Info.js";
 class Home extends Component {
   state = {
-    mensaje: {
-      numero: "1",
-      mensajes: [
-        "El mejor pan recien hecho",
-        "la lechuga mas fresca",
-        "tomates de la huerta",
-        "cebolla recien cortada",
-        "pepinillos como los de siempre",
-        "la carne a la parrilla mas tierna",
-        "El mejor pan recien hecho"
-      ],
-      mensaje2: ""
-    },
-    mostrar: false
+    images: ["../images/logo_burguer.png"]
   };
-
-  cambiaNumero = (numero, e) => {
-    this.setState({
-      mensaje2: this.state.mensaje.mensajes[numero]
-    });
-    console.log(this.state.mensaje2);
-  };
-
-  HandleMostrar = e => {
-    this.setState({
-      mostrar: e
-    });
-  };
-
+  Slideshow = () => {};
   render() {
     return (
-      <div className="container">
-        <div className="burguer-card">
-          <h1 className="title">Hamburguesas Firoh</h1>
-          <p className="parrafo">
-            Las mejores hamburguesas de todo el pais ahora a tu alcance desde la
-            web!
-          </p>
-
-          <div
-            className="burguer-frame"
-            onMouseEnter={() => this.HandleMostrar(true)}
-            onMouseLeave={() => this.HandleMostrar(false)}
-          >
-            <div
-              className="burguer top-pan"
-              onMouseEnter={() => this.cambiaNumero(0)}
-            ></div>
-            <div
-              className="burguer lechuga"
-              onMouseEnter={() => this.cambiaNumero(1)}
-            ></div>
-            <div
-              className="burguer tomate"
-              onMouseEnter={() => this.cambiaNumero(2)}
-            ></div>
-            <div
-              className="burguer cebolla"
-              onMouseEnter={() => this.cambiaNumero(3)}
-            ></div>
-            <div
-              className="burguer pepinillos"
-              onMouseEnter={() => this.cambiaNumero(4)}
-            ></div>
-            <div
-              className="burguer carne"
-              onMouseEnter={() => this.cambiaNumero(5)}
-            ></div>
-            <div
-              className="burguer bot-pan"
-              onMouseEnter={() => this.cambiaNumero(6)}
-            ></div>
+      <div className="home-container">
+        <div className="slider">
+          <div className="slider-show">
+            <img alt="a" src={image1} />
+            <img alt="a" src={image2} />
+            <img alt="a" src={image3} />
+            <img alt="a" src={image4} />
           </div>
-          <h2 className="parrafo bottom">
-            {this.state.mostrar ? this.state.mensaje2 : ""}
-          </h2>
         </div>
+        <Info></Info>
       </div>
     );
   }
 }
+
 export default Home;

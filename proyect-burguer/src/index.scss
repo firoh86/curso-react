@@ -1,0 +1,24 @@
+@import "./components/navBar/navbar.scss";
+@import "./components/pedido/pedido.scss";
+@import "./components/home/home.scss";
+@import "./components/info/info.scss";
+@import "./components/formulary/formulary.scss";
+@import "./components/burguerCard/burguerCard.scss";
+@import "./components/cardPlus/cardPlus.scss";
+@import "./components/shopCart/shopCart.scss";
+@import "./components/iniciaPedido/inicioPedido.scss";
+body {
+  margin: 0;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #dfdfdf;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}

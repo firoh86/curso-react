@@ -1,0 +1,125 @@
+.list-hide {
+  position: fixed;
+  right: -300px;
+  transform: translateX(0px);
+  top: 30vh;
+  transition: transform 0.3s;
+}
+.list-show {
+  right: -220px;
+  transform: translateX(-222px);
+  position: fixed;
+  transition: transform 0.3s;
+
+  top: 30vh;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.card-container {
+  margin-top: 3em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.burguer-card {
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+}
+.title {
+  text-align: center;
+  margin: 0;
+}
+.parrafo {
+  font-weight: bold;
+  text-align: center;
+}
+
+.burguer-frame {
+  display: flex;
+  height: 400px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.parrafo-bottom {
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 450px;
+}
+.burguer {
+  height: 18px;
+  margin: 4px 0;
+  background-color: royalblue;
+  width: 250px;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+.top-pan,
+.bot-pan {
+  background-color: #edb523;
+  height: 60px;
+  width: 275px;
+}
+.carne {
+  height: 45px;
+  background-color: #5f2914;
+}
+.top-pan {
+  border-radius: 30px 30px 0 0;
+}
+.bot-pan {
+  border-radius: 0 0 30px 30px;
+}
+.lechuga {
+  background-color: #42b116;
+  border-radius: 0;
+}
+.tomate {
+  border-radius: 0;
+  background-color: rgb(189, 28, 28);
+  height: 20px;
+}
+.cebolla {
+  border-radius: 0;
+  background-color: rgb(207, 204, 204);
+}
+.pepinillos {
+  background-color: rgb(4, 78, 36);
+}
+
+.burguer-frame > .burguer:nth-child(1):hover {
+  transform: translateY(-30px) scale(1.25);
+
+  transition: transform 0.3s;
+}
+.burguer-frame > .burguer:nth-child(2):hover {
+  transform: translateY(-20px) scale(1.25);
+  transition: transform 0.3s;
+}
+.burguer-frame > .burguer:nth-child(3):hover {
+  transform: translateY(-10px) scale(1.25);
+  transition: transform 0.3s;
+}
+.burguer-frame > .burguer:nth-child(4):hover {
+  transform: translateY(0px) scale(1.25);
+  transition: transform 0.3s;
+}
+.burguer-frame > .burguer:nth-child(5):hover {
+  transform: translateY(10px) scale(1.25);
+  transition: transform 0.3s;
+}
+.burguer-frame > .burguer:nth-child(6):hover {
+  transform: translateY(20px) scale(1.25);
+  transition: transform 0.3s;
+}
+.burguer-frame > .burguer:nth-child(7):hover {
+  transform: translateY(30px) scale(1.25);
+  transition: transform 0.3s;
+}

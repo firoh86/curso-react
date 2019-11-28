@@ -49,6 +49,7 @@ class Pedido extends Component {
       this.setState({ mostrarList: false });
     }
   };
+
   TrolleyAdd = cart => {
     // Se añaden a la lista de la compra
     const listItem = {
@@ -63,8 +64,9 @@ class Pedido extends Component {
   BorrarListItem = id => {
     const newList = this.state.trolley.filter(item => item.id !== id);
     this.setState({ trolley: newList });
-    // console.log(this.state.trolley);
+    console.log(id);
   };
+
   render() {
     return (
       <div className="container">

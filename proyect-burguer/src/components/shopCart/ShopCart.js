@@ -6,6 +6,7 @@ const ShopCart = ({ mostrar, onClick, lista, deleteItem }) => {
     return (suma = suma + parseFloat(item.precio));
   });
   // console.log(suma);
+
   return (
     <div className="shopcart">
       <div className="button-container">
@@ -16,15 +17,15 @@ const ShopCart = ({ mostrar, onClick, lista, deleteItem }) => {
       <div className="shoplist">
         <h3 className="shopList-title">Listado del pedido</h3>
         <ul>
-          {lista.map(item => (
-            <div className="itemRow" key={item.id}>
+          {lista.map((item, index) => (
+            <div className="itemRow" key={index}>
               <li className="listItem">
                 {item.titulo} - {item.precio}
               </li>
 
               <button
                 className="listItemButton"
-                onClick={deleteItem.bind(this, item.id)}
+                onClick={deleteItem.bind(this, index)}
               >
                 x
               </button>

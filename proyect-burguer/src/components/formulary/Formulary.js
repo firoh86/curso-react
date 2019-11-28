@@ -83,6 +83,7 @@ class Formulary extends Component {
       }
     ]
   };
+  // para generar id unicos en los card para la lista
   render() {
     // guarda el array con ese nombre que este en el state
     const { cards } = this.state;

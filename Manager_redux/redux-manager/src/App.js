@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+// importamos el Provider de la libreria react-redux
+// El provider debe envolver toda nuestra aplicacion, igual que con context
+//  para poder acceder a el desde cualquiera de nuestros componentes
+import { Provider } from "react-redux";
+import store from "./store";
 
-function App() {
+import Players from "./components/Players";
+import SelectedTeam from "./components/SelectedTeam";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // el provider debe proveer el store
+    <Provider store={store}>
+      <div>
+        <h1>Manager</h1>
+        <Players />
+        <SelectedTeam />
+      </div>
+    </Provider>
   );
-}
+};
 
 export default App;

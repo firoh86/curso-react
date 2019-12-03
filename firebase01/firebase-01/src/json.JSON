@@ -1,0 +1,21 @@
+{
+  "usuarios": [
+    {
+      "uid": "",
+      "nickname": "",
+      "description": "",
+      "likes": "",
+      "following": "",
+      "followers": ""
+    }
+  ],
+  "posts": [
+    {
+      "uid": "",
+      "nickname": "",
+      "confesion": "",
+      "icons": []
+    }
+  ],
+  "coments": []
+}

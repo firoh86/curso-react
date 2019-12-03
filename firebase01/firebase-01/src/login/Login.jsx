@@ -1,3 +1,4 @@
+// verificate email
 import React, { useState } from "react";
 import "firebase/auth";
 import { useFirebaseApp } from "reactfire";
@@ -23,7 +24,7 @@ const Login = () => {
   });
   // toggle del form de inicio
   const toggleForm = () => setRegisterForm(!registerForm);
-
+  // carpeta services
   const register = async e => {
     await firebase
       .auth()
@@ -50,10 +51,10 @@ const Login = () => {
         } else {
           alert(errorMessage);
         }
-        console.log(err);
+        // console.log(err);
       });
 
-    console.log(user);
+    // console.log(user);
   };
   const login = async () => {
     await firebase
@@ -81,10 +82,10 @@ const Login = () => {
         } else {
           alert(errorMessage);
         }
-        console.log(err);
+        // console.log(err);
       });
 
-    console.log(user);
+    // console.log(user);
   };
 
   const logout = async () => {
@@ -178,7 +179,6 @@ const Login = () => {
             {registerForm
               ? "¿Ya estás registrado? "
               : "¿Aun no tienes cuenta? "}
-            {/* <button onClick={toggleForm}> */}
             <button
               onClick={() => {
                 toggleForm();

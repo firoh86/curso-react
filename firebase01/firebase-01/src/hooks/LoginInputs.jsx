@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const LoginInputs = initialValue => {
-  // campos del formularios
+  // campos del formulario
   const [email, setEmail] = useState(initialValue);
   const [password, setPassword] = useState(initialValue);
 

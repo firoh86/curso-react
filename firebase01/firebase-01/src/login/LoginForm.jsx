@@ -7,15 +7,15 @@ const LoginForm = () => {
   const [email, password, bindMail, bindPassword, reset] = LoginInputs("");
   // firebaseAuth
   const [login] = FirebaseAuth();
-
-  const submitHandle = e => {
+  // debuguear no llega el reset
+  const loginHandle = e => {
     e.preventDefault();
     login(email, password);
     reset();
   };
   return (
     <div>
-      <form onSubmit={submitHandle}>
+      <form onSubmit={loginHandle}>
         <div>
           <input type="email" {...bindMail} placeholder="correo"></input>
         </div>

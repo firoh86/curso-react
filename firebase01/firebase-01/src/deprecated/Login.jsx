@@ -13,6 +13,7 @@ const Login = () => {
   const [useridForm, setUserIdForm] = useState({
     email: "",
     password: "",
+    verification: "",
     nickname: "",
     userUid: ""
   });
@@ -26,34 +27,37 @@ const Login = () => {
   const toggleForm = () => setRegisterForm(!registerForm);
   // carpeta services
   const register = async e => {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(useridForm.email, useridForm.password)
-      .then(data => {
-        let uid = firebase.auth().currentUser.uid;
-        setUserId({
-          ...userid,
-          email: useridForm.email,
-          password: useridForm.password,
-          userUid: uid
-        });
-        user = firebase.auth().currentUser;
-        setisloged(true);
-        resetValues();
-      })
-      .catch(err => {
-        // Handle Errors here.
-        let errorCode = err.code;
-        let errorMessage = err.message;
-        if (errorCode === "auth/wrong-password") {
-          alert("Wrong password.");
+    if (useridForm.password === useridForm.verification) {
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(useridForm.email, useridForm.password)
+        .then(data => {
+          let uid = firebase.auth().currentUser.uid;
+          setUserId({
+            ...userid,
+            email: useridForm.email,
+            password: useridForm.password,
+            userUid: uid
+          });
+          user = firebase.auth().currentUser;
+          setisloged(true);
           resetValues();
-        } else {
-          alert(errorMessage);
-        }
-        // console.log(err);
-      });
-
+        })
+        .catch(err => {
+          // Handle Errors here.
+          let errorCode = err.code;
+          let errorMessage = err.message;
+          if (errorCode === "auth/wrong-password") {
+            alert("Wrong password.");
+            resetValues();
+          } else {
+            alert(errorMessage);
+          }
+          // console.log(err);
+        });
+    } else {
+      alert("the passwords must be the same");
+    }
     // console.log(user);
   };
   const login = async () => {
@@ -156,15 +160,26 @@ const Login = () => {
             value={useridForm.password}
           ></input>
           {registerForm && (
-            <input
-              onChange={e =>
-                setUserIdForm({ ...useridForm, nickname: e.target.value })
-              }
-              type="text"
-              placeholder="usuario"
-              id="usuario"
-              value={useridForm.nickname}
-            ></input>
+            <div>
+              <input
+                onChange={e =>
+                  setUserIdForm({ ...useridForm, nickname: e.target.value })
+                }
+                type="text"
+                placeholder="usuario"
+                id="usuario"
+                value={useridForm.nickname}
+              ></input>
+              <input
+                onChange={e =>
+                  setUserIdForm({ ...useridForm, verification: e.target.value })
+                }
+                type="password"
+                placeholder="repita contraseña"
+                id="verification"
+                value={useridForm.verification}
+              ></input>
+            </div>
           )}
           {registerForm ? (
             <button className="login__button" onClick={register}>

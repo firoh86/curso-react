@@ -1,0 +1,42 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  font-weight: 600;
+  &__title {
+    background-color: $block-color;
+    color: $title;
+    width: 100%;
+    padding: 0.5rem 0;
+    margin: 0;
+  }
+  &Button {
+    width: 80%;
+    min-width: 200px;
+  }
+  & p {
+    margin: 0.5rem;
+  }
+  &__form {
+    margin-bottom: 2rem;
+  }
+  &__body {
+    box-sizing: content-box;
+    padding: 1rem;
+  }
+}
+
+.loginCard {
+  background-color: $forms-color;
+
+  margin-bottom: 1rem;
+  height: auto;
+  & input {
+    border: 1px solid $boton-1;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+}

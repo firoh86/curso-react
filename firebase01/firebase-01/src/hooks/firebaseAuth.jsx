@@ -17,6 +17,8 @@ const FirebaseAuth = () => {
         userID = firebase.auth().currentUser.uid;
 
         console.log(userID);
+
+        alert("Se ha logeado con exito");
       })
       .catch(err => {
         // Handle Errors here.
@@ -39,6 +41,8 @@ const FirebaseAuth = () => {
           userID = firebase.auth().currentUser.uid;
 
           console.log(userID);
+
+          alert("Te has registrado con exito");
         })
         .catch(err => {
           // Handle Errors here.
@@ -60,6 +64,8 @@ const FirebaseAuth = () => {
       .signOut()
       .then(data => {
         userID = null;
+
+        alert("Se ha deslogeado con exito");
       })
       .catch(err => {
         alert(err);

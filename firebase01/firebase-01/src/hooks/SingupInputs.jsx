@@ -33,6 +33,7 @@ const SingupInputs = initialValue => {
     }
   };
   const reset = () => {
+    console.log("se resetea");
     setEmail(initialValue);
     setPassword(initialValue);
     setRepassword(initialValue);

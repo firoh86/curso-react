@@ -1,15 +1,24 @@
 import React from "react";
-// useSelector permite tomar los datos sin usar connect que es un componente de alto orden
-import { useSelector } from "react-redux";
+// useSelector sustituye el mapstatetoprops, y usedispatch el mapdispatchtoprops
+// estos metodos sustituyen el componente de alto orden connect haciendolos menos pesados
+import { useSelector, useDispatch } from "react-redux";
 
 function App(props) {
-  // así lo declaramos
-  const data = useSelector(state => {
-    console.log(state);
-  });
+  const names = useSelector(state => state.names);
+  const dispatch = useDispatch();
+  console.log(names);
+
+  const handleClick = name => {
+    return dispatch({
+      type: "ADD_NAME",
+      payload: name
+    });
+  };
+
   return (
     <div className="App">
-      <button>pulsame</button>
+      <li>{names}</li>
+      <button onClick={() => handleClick("firoh")}>pulsame</button>
     </div>
   );
 }

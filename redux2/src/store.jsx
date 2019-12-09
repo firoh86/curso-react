@@ -6,9 +6,10 @@ const stateDefault = {
 
 const reducer = (state = stateDefault, action) => {
   switch (action.type) {
-    case "addName":
+    case "ADD_NAME":
       return {
-        ...state
+        ...state,
+        names: [...state.names, action.payload]
       };
     default:
       return state;

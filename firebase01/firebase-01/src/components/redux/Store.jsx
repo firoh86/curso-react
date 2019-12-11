@@ -1,16 +1,19 @@
 import { createStore } from "redux";
 
 const stateDefault = {
-  name: ""
+  userid: "",
+  isloged: false,
+  usernickname: ""
 };
 
 // (previousState,action)=>newState
 const reducer = (state = stateDefault, action) => {
   switch (action.type) {
-    case "changeName":
+    case "LOG_STATUS":
       return {
         ...state,
-        name: state.name
+        userid: action.payload,
+        isloged: action.payload2
       };
     default:
       return state;

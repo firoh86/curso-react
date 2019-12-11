@@ -3,16 +3,22 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+// redux
+import { Provider } from "react-redux";
+import store from "./components/redux/Store";
+// firebase
 import fire from "./fire";
 import { FirebaseAppProvider } from "reactfire";
 
 // npm i --save firebase reactfire@next
 ReactDOM.render(
-  <FirebaseAppProvider fire={fire}>
-    <Suspense fallback={"...Conectando la app"}>
-      <App />
-    </Suspense>
-  </FirebaseAppProvider>,
+  <Provider store={store}>
+    <FirebaseAppProvider fire={fire}>
+      <Suspense fallback={"...Conectando la app"}>
+        <App />
+      </Suspense>
+    </FirebaseAppProvider>
+  </Provider>,
   document.getElementById("root")
 );
 

@@ -1,8 +1,12 @@
 // import { useState } from "react";
 import "firebase/auth";
 import { useFirebaseApp } from "reactfire";
-
+// para redux actions
+import Actions from "../components/redux/Actions";
 const FirebaseAuth = () => {
+  // actions de redux
+  const [logStatus] = Actions();
+
   // user id unica desde firebase.auth().currentUser.uid;
   let userID;
   // hook de firebase
@@ -16,7 +20,8 @@ const FirebaseAuth = () => {
       .then(data => {
         userID = firebase.auth().currentUser.uid;
 
-        console.log(userID);
+        logStatus(userID, true);
+        // console.log(userID);
 
         alert("Se ha logeado con exito");
       })
@@ -39,8 +44,8 @@ const FirebaseAuth = () => {
         .createUserWithEmailAndPassword(email, password)
         .then(data => {
           userID = firebase.auth().currentUser.uid;
-
-          console.log(userID);
+          logStatus(userID, true);
+          // console.log(userID);
 
           alert("Te has registrado con exito");
         })
@@ -64,7 +69,7 @@ const FirebaseAuth = () => {
       .signOut()
       .then(data => {
         userID = null;
-
+        logStatus("", false);
         alert("Se ha deslogeado con exito");
       })
       .catch(err => {

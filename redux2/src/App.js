@@ -11,7 +11,9 @@ function App(props) {
 
   return (
     <div className="App">
-      <li>{names}</li>
+      {names.map((name, idx) => (
+        <li key={idx}>{name}</li>
+      ))}
       <button onClick={() => addname("firoh")}>pulsame</button>
     </div>
   );

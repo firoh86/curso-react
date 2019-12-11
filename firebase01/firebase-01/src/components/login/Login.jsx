@@ -3,6 +3,8 @@ import LoginForm from "./LoginForm";
 import LogoutForm from "./LogoutForm";
 import SingUpForm from "./SingUpForm";
 
+// arreglar el ternario de isloged y traerlo desde redux
+
 const Login = () => {
   const [isloged, setIsloged] = useState(false);
   // al inicio siempre en falso

@@ -2,7 +2,7 @@ import React from "react";
 import LoginInputs from "../../hooks/LoginInputs";
 import FirebaseAuth from "../../hooks/firebaseAuth";
 
-const LoginForm = ({ isloged, create }) => {
+const LoginForm = ({ create }) => {
   // loginInputs
   const [email, password, bindMail, bindPassword, reset] = LoginInputs("");
   // firebaseAuth
@@ -13,8 +13,6 @@ const LoginForm = ({ isloged, create }) => {
     login(email, password);
     // async con redux
     reset();
-    isloged();
-    // ---------
   };
   return (
     <div className="login ">

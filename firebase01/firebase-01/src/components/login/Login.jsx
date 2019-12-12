@@ -3,32 +3,30 @@ import LoginForm from "./LoginForm";
 import LogoutForm from "./LogoutForm";
 import SingUpForm from "./SingUpForm";
 
-// arreglar el ternario de isloged y traerlo desde redux
+// para redux
+import { useSelector } from "react-redux";
 
 const Login = () => {
-  const [isloged, setIsloged] = useState(false);
-  // al inicio siempre en falso
+  // para saber si el usuario esta logeado
+  const state = useSelector(state => state);
+  // console.log(state.isloged);
+
   const [create, setCreate] = useState(false);
 
   const isCreating = () => {
     setCreate(create => !create);
   };
 
-  const islogedFunction = () => {
-    setIsloged(isloged => !isloged);
-    // console.log(isloged);
-  };
-
   return (
     <div>
-      {isloged ? (
-        <LogoutForm isloged={islogedFunction}></LogoutForm>
+      {state.isloged ? (
+        <LogoutForm></LogoutForm>
       ) : (
         <div>
           {create ? (
             <SingUpForm create={isCreating}></SingUpForm>
           ) : (
-            <LoginForm isloged={islogedFunction} create={isCreating} />
+            <LoginForm create={isCreating} />
           )}
         </div>
       )}

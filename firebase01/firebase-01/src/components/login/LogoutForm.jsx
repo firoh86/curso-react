@@ -8,8 +8,6 @@ const LogoutForm = ({ isloged }) => {
   const logoutHandle = e => {
     e.preventDefault();
     logout();
-    // async con redux
-    isloged();
   };
   return (
     <div className="login ">

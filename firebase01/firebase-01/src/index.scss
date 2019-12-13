@@ -1,6 +1,7 @@
-@import "./color.scss";
+@import "./scss/color.scss";
 @import "./components/header/navbar.scss";
 @import "./components/login/loginForm.scss";
+@import "./components/profile/profile.scss";
 body {
   margin: 0;
   font-family: calibre, sans-serif;

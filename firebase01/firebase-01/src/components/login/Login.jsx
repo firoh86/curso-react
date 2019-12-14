@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
-import LogoutForm from "./LogoutForm";
 import SingUpForm from "./SingUpForm";
 
 // para redux
@@ -19,9 +18,7 @@ const Login = () => {
 
   return (
     <div>
-      {state.isloged ? (
-        <LogoutForm></LogoutForm>
-      ) : (
+      {!state.isloged && (
         <div>
           {create ? (
             <SingUpForm create={isCreating}></SingUpForm>

@@ -46,7 +46,7 @@ const FirebaseAuth = () => {
           userID = firebase.auth().currentUser.uid;
           logStatus(userID, true);
           // console.log(userID);
-
+          // insert data new user
           alert("Te has registrado con exito");
         })
         .catch(err => {

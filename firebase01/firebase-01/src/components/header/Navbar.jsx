@@ -9,8 +9,18 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 // para state de redux
 import { useSelector } from "react-redux";
+// para el logout automatico
+import FirebaseAuth from "../../hooks/firebaseAuth";
 
 const Navbar = () => {
+  const [, , logout] = FirebaseAuth();
+
+  const logoutHandle = e => {
+    //deslogea y te manda al home
+
+    logout();
+  };
+
   const state = useSelector(state => state);
   return (
     <div className="navbar">
@@ -51,23 +61,24 @@ const Navbar = () => {
       ) : (
         <>
           <NavLink
-            to="/login"
+            to="/profile"
             activeClassName="is-active"
             className="navbar__element "
+          >
+            <FontAwesomeIcon icon={faUser} size="1x" className="navbar__icon" />
+          </NavLink>
+
+          <NavLink
+            to="/home"
+            activeClassName="is-active"
+            className="navbar__element "
+            onClick={logoutHandle}
           >
             <FontAwesomeIcon
               icon={faSignOutAlt}
               size="1x"
               className="navbar__icon"
             />
-          </NavLink>
-
-          <NavLink
-            to="/profile"
-            activeClassName="is-active"
-            className="navbar__element "
-          >
-            <FontAwesomeIcon icon={faUser} size="1x" className="navbar__icon" />
           </NavLink>
         </>
       )}

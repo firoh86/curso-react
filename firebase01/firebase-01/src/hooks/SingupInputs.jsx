@@ -44,6 +44,7 @@ const SingupInputs = initialValue => {
     email,
     password,
     repassword,
+    nickname,
     bindMail,
     bindPassword,
     bindRepassword,

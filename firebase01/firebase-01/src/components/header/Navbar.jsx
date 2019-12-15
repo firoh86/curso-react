@@ -10,14 +10,13 @@ import { NavLink } from "react-router-dom";
 // para state de redux
 import { useSelector } from "react-redux";
 // para el logout automatico
-import FirebaseAuth from "../../hooks/firebaseAuth";
+import FirebaseAuth from "../../hooks/firebase/firebaseAuth";
 
 const Navbar = () => {
   const [, , logout] = FirebaseAuth();
 
   const logoutHandle = e => {
     //deslogea y te manda al home
-
     logout();
   };
 
@@ -69,8 +68,7 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/home"
-            activeClassName="is-active"
+            to="/login"
             className="navbar__element "
             onClick={logoutHandle}
           >

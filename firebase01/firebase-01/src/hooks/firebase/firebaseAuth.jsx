@@ -2,10 +2,18 @@
 import "firebase/auth";
 import { useFirebaseApp } from "reactfire";
 // para redux actions
-import Actions from "../components/redux/Actions";
+import Actions from "../../components/redux/Actions";
+// para la redireccion forzada al home
+import { useHistory } from "react-router-dom";
+// para crear usuario nuevo en firestore
+import FirestoreActions from "./firestoreActions";
+
 const FirebaseAuth = () => {
+  const history = useHistory();
   // actions de redux
   const [logStatus] = Actions();
+  // actions de firestore
+  const [SetNewUser] = FirestoreActions();
 
   // user id unica desde firebase.auth().currentUser.uid;
   let userID;
@@ -24,6 +32,7 @@ const FirebaseAuth = () => {
         // console.log(userID);
 
         alert("Se ha logeado con exito");
+        history.push("/home");
       })
       .catch(err => {
         // Handle Errors here.
@@ -33,11 +42,12 @@ const FirebaseAuth = () => {
           alert("Wrong password.");
         } else {
           alert(errorMessage);
+          // fallo con el correo, parece que se reinicia el campo
         }
       });
   };
-
-  const singup = async (email, password, repassword) => {
+  // nickname para firestore
+  const singup = async (email, password, repassword, nickname) => {
     if (password === repassword) {
       await firebase
         .auth()
@@ -46,8 +56,9 @@ const FirebaseAuth = () => {
           userID = firebase.auth().currentUser.uid;
           logStatus(userID, true);
           // console.log(userID);
-          // insert data new user
+          SetNewUser(userID, nickname);
           alert("Te has registrado con exito");
+          history.push("/home");
         })
         .catch(err => {
           // Handle Errors here.
@@ -71,6 +82,7 @@ const FirebaseAuth = () => {
         userID = null;
         logStatus("", false);
         alert("Se ha deslogeado con exito");
+        history.push("/home");
       })
       .catch(err => {
         alert(err);

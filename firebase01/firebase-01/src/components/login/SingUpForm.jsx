@@ -1,6 +1,6 @@
 import React from "react";
 import SingupInputs from "../../hooks/SingupInputs";
-import FirebaseAuth from "../../hooks/firebaseAuth";
+import FirebaseAuth from "../../hooks/firebase/firebaseAuth";
 
 const SingUpForm = ({ create }) => {
   // SingUpInputs
@@ -8,6 +8,7 @@ const SingUpForm = ({ create }) => {
     email,
     password,
     repassword,
+    nickname,
     bindMail,
     bindPassword,
     bindRepassword,
@@ -20,7 +21,7 @@ const SingUpForm = ({ create }) => {
   // debuguear no llega el reset
   const singupHandle = e => {
     e.preventDefault();
-    singup(email, password, repassword);
+    singup(email, password, repassword, nickname);
     reset();
   };
   return (

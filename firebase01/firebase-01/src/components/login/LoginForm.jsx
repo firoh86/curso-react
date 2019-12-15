@@ -1,6 +1,6 @@
 import React from "react";
 import LoginInputs from "../../hooks/LoginInputs";
-import FirebaseAuth from "../../hooks/firebaseAuth";
+import FirebaseAuth from "../../hooks/firebase/firebaseAuth";
 
 const LoginForm = ({ create }) => {
   // loginInputs

@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react";
 // para state de redux
 import { useSelector } from "react-redux";
-import firestoreActions from "../../hooks/firebase/firestoreActions";
+import { firestore } from "firebase";
 
 const Profile = () => {
   const state = useSelector(state => state);
-  // autocompletado de perfil
-  const [, ReadUserProfile] = firestoreActions();
-
-  const [profileData, setProfileData] = useState({
-    nickname: "",
-    description: "",
-    likes: 0,
-    followers: 0,
-    following: 0
-  });
-
+  const [profileData, setProfileData] = useState({});
+  // pasarlo al state de redux para que no tenga delay
   useEffect(() => {
-    const ask = async () => {
-      const res = await ReadUserProfile(state.userid);
-      console.log(res);
+    const fillProfile = uid => {
+      firestore()
+        .collection("users")
+        .get()
+        .then(snapshot => {
+          const newProfileData = snapshot.docs
+            .filter(data => data.id === uid)[0]
+            .data();
+          setProfileData({
+            ...profileData,
+            nickname: newProfileData.nickname,
+            description: newProfileData.description,
+            likes: newProfileData.likes,
+            followers: newProfileData.followers,
+            following: newProfileData.following
+          });
+        });
     };
-
-    ask();
-  }, [ReadUserProfile, state.userid]);
+    fillProfile(state.userid);
+  }, [profileData, state.userid]);
 
   return (
     <div className="profile__container">
@@ -59,17 +63,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-/* 
-
- return () => {
-      setProfileData({
-        ...profileData,
-        nickname: readData.nickname,
-        description: readData.description,
-        likes: readData.likes,
-        followers: readData.followers,
-        following: readData.following
-      });
-    };
-*/

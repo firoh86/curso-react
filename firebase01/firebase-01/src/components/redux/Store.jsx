@@ -3,7 +3,8 @@ import { createStore } from "redux";
 const stateDefault = {
   userid: "",
   isloged: false,
-  usernickname: ""
+  usernickname: "",
+  profile: {}
 };
 
 // (previousState,action)=>newState

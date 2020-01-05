@@ -11,28 +11,14 @@ const firestoreActions = () => {
       following: 0,
       likes: 0
     };
-    const setUser = firestore()
+    firestore()
       .collection("users")
       // si no le pasas parametro a .doc google genera Id unico
       .doc(newData.uid)
       .set(newData);
   };
 
-  const ReadUserProfile = uid => {
-    firestore()
-      .collection("users")
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          if (uid === data.uid) {
-            // guardar la funcion de llamada en una constante para extraer datos
-            return data;
-          }
-        });
-      });
-  };
-  return [SetNewUser, ReadUserProfile];
+  return [SetNewUser];
 };
 
 export default firestoreActions;

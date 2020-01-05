@@ -1,6 +1,11 @@
 import { firestore } from "firebase";
+// para redux actions
+import Actions from "../../components/redux/Actions";
 
 const firestoreActions = () => {
+  // actions de redux
+  const [, logData] = Actions();
+
   const SetNewUser = (uid, nickname) => {
     // console.log(`${uid} -- ${nickname}`);
     const newData = {
@@ -18,7 +23,27 @@ const firestoreActions = () => {
       .set(newData);
   };
 
-  return [SetNewUser];
+  // actualizar state de redux con la info de firestore al logearse
+  const LoginUpdateData = uid => {
+    firestore()
+      .collection("users")
+      .get()
+      .then(snapshot => {
+        const newProfileData = snapshot.docs
+          .filter(data => data.id === uid)[0]
+          .data();
+        const newData = {
+          nickname: newProfileData.nickname,
+          description: newProfileData.description,
+          likes: newProfileData.likes,
+          followers: newProfileData.followers,
+          following: newProfileData.following
+        };
+        logData(newData);
+      });
+  };
+
+  return [SetNewUser, LoginUpdateData];
 };
 
 export default firestoreActions;

@@ -13,7 +13,7 @@ const FirebaseAuth = () => {
   // actions de redux
   const [logStatus] = Actions();
   // actions de firestore
-  const [SetNewUser] = FirestoreActions();
+  const [SetNewUser, LoginUpdateData] = FirestoreActions();
 
   // user id unica desde firebase.auth().currentUser.uid;
   let userID;
@@ -27,9 +27,12 @@ const FirebaseAuth = () => {
       .signInWithEmailAndPassword(email, password)
       .then(data => {
         userID = firebase.auth().currentUser.uid;
-
+        // is loged para permitir navegar a vistas privadas
         logStatus(userID, true);
         // console.log(userID);
+
+        // actualiza el state desde info de firestore al logear
+        LoginUpdateData(userID);
 
         alert("Se ha logeado con exito");
         history.push("/home");

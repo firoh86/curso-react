@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 const Actions = () => {
   const dispatch = useDispatch();
-
+  // actualiza el user ID y el log estatus
   const logStatus = (userID, logState) => {
     return dispatch({
       type: "LOG_STATUS",
@@ -10,8 +10,18 @@ const Actions = () => {
       payload2: logState
     });
   };
-
-  return [logStatus];
+  // Actualiza el state para completar la info de perfil con firestore
+  const logData = newData => {
+    return dispatch({
+      type: "UPDATE_DATA",
+      payload: newData.nickname,
+      payload2: newData.description,
+      payload3: newData.likes,
+      payload4: newData.followers,
+      payload5: newData.following
+    });
+  };
+  return [logStatus, logData];
 };
 
 export default Actions;

@@ -1,33 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 // para state de redux
 import { useSelector } from "react-redux";
-import { firestore } from "firebase";
 
 const Profile = () => {
   const state = useSelector(state => state);
-  const [profileData, setProfileData] = useState({});
   // pasarlo al state de redux para que no tenga delay
   useEffect(() => {
-    const fillProfile = uid => {
-      firestore()
-        .collection("users")
-        .get()
-        .then(snapshot => {
-          const newProfileData = snapshot.docs
-            .filter(data => data.id === uid)[0]
-            .data();
-          setProfileData({
-            ...profileData,
-            nickname: newProfileData.nickname,
-            description: newProfileData.description,
-            likes: newProfileData.likes,
-            followers: newProfileData.followers,
-            following: newProfileData.following
-          });
-        });
-    };
-    fillProfile(state.userid);
-  }, [profileData, state.userid]);
+    // En caso de que se actualizen los datos del state mientras estas en el perfil, actualizame el perfil
+  }, [state]);
 
   return (
     <div className="profile__container">
@@ -37,23 +17,21 @@ const Profile = () => {
         </div>
         <div className="card-profile__header">
           <div className="card-profile__title">
-            <h3 className="card-profile__nickname">{profileData.nickname}</h3>
-            <p className="card-profile__description">
-              {profileData.description}
-            </p>
+            <h3 className="card-profile__nickname">{state.usernickname}</h3>
+            <p className="card-profile__description">{state.description}</p>
           </div>
         </div>
         <div className="card-profile__body">
           <div className="card-profile__column">
-            <h2 className="card-profile__count">{profileData.likes}</h2>
+            <h2 className="card-profile__count">{state.likes}</h2>
             <h4 className="card-profile__subtitle">Likes</h4>
           </div>
           <div className="card-profile__column">
-            <h2 className="card-profile__count">{profileData.followers}</h2>
+            <h2 className="card-profile__count">{state.followers}</h2>
             <h4 className="card-profile__subtitle">Followers</h4>
           </div>
           <div className="card-profile__column">
-            <h2 className="card-profile__count">{profileData.following}</h2>
+            <h2 className="card-profile__count">{state.following}</h2>
             <h4 className="card-profile__subtitle">Following</h4>
           </div>
         </div>
@@ -63,3 +41,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+/*  */

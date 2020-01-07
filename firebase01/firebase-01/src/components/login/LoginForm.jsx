@@ -15,27 +15,31 @@ const LoginForm = ({ create }) => {
     reset();
   };
   return (
-    <div className="login ">
-      <div className="loginCard ">
-        <form onSubmit={loginHandle} className="login__form">
-          <h3 className="login__title">log in</h3>
-          <div className="login__body">
-            <div>
-              <input type="email" {...bindMail} placeholder="correo"></input>
-            </div>
-            <div>
-              <input
-                type="password"
-                {...bindPassword}
-                placeholder="contraseña"
-              ></input>
-            </div>
-            <button className="button loginButton">Acceder</button>
+    <div className="form-container  ">
+      <div className="form-card ">
+        <form onSubmit={loginHandle}>
+          <h3 className="form-tittle">log in</h3>
+          <div className="form-block-vertical">
+            <input
+              type="email"
+              {...bindMail}
+              placeholder="correo"
+              className="form-element"
+            ></input>
+
+            <input
+              type="password"
+              {...bindPassword}
+              placeholder="contraseña"
+              className="form-element"
+            ></input>
+
+            <button className="form-button ">Acceder</button>
           </div>
         </form>
-        <div className="login__body">
-          <p>¿Aun no tienes cuenta?</p>
-          <button className="button  loginButton" onClick={() => create()}>
+        <div className="form-block-vertical">
+          <p className="form-subtittle">¿Aun no tienes cuenta?</p>
+          <button className="form-button " onClick={() => create()}>
             Crear una
           </button>
         </div>

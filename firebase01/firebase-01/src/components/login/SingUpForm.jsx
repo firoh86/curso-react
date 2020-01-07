@@ -25,41 +25,45 @@ const SingUpForm = ({ create }) => {
     reset();
   };
   return (
-    <div className="login ">
-      <div className="loginCard ">
+    <div className="form-container ">
+      <div className="form-card ">
         <form onSubmit={singupHandle}>
-          <h3 className="login__title">Sign in</h3>
-          <div className="login__body">
-            <div>
-              <input type="email" {...bindMail} placeholder="correo"></input>
-            </div>
-            <div>
-              <input
-                type="password"
-                {...bindPassword}
-                placeholder="contraseña"
-              ></input>
-            </div>
-            <div>
-              <input
-                type="password"
-                {...bindRepassword}
-                placeholder="repite contraseña"
-              ></input>
-            </div>
-            <div>
-              <input
-                type="text"
-                {...bindNickname}
-                placeholder="nombre de usuario"
-              ></input>
-            </div>
-            <button className="button  loginButton">Crear cuenta</button>
+          <h3 className="form-tittle">Sign in</h3>
+          <div className="form-block-vertical">
+            <input
+              type="email"
+              {...bindMail}
+              placeholder="correo"
+              className="form-element"
+            ></input>
+
+            <input
+              type="password"
+              {...bindPassword}
+              placeholder="contraseña"
+              className="form-element"
+            ></input>
+
+            <input
+              type="password"
+              {...bindRepassword}
+              placeholder="repite contraseña"
+              className="form-element"
+            ></input>
+
+            <input
+              type="text"
+              {...bindNickname}
+              placeholder="nombre de usuario"
+              className="form-element"
+            ></input>
+
+            <button className="form-button ">Crear cuenta</button>
           </div>
         </form>
-        <div className="login__body">
-          <p>¿Ya tienes una cuenta?</p>
-          <button className="button  loginButton" onClick={() => create()}>
+        <div className="form-block-vertical">
+          <p className="form-subtittle">¿Ya tienes una cuenta?</p>
+          <button className="form-button " onClick={() => create()}>
             Acceder
           </button>
         </div>

@@ -19,21 +19,13 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          {!state.isloged
-            ? PublicRoutes.map((route, idx) => (
-                <Route
-                  key={idx}
-                  path={route.name}
-                  component={route.component}
-                />
-              ))
-            : PrivateRoutes.map((route, idx) => (
-                <Route
-                  key={idx}
-                  path={route.name}
-                  component={route.component}
-                />
-              ))}
+          {state.isloged &&
+            PrivateRoutes.map((route, idx) => (
+              <Route key={idx} path={route.name} component={route.component} />
+            ))}
+          {PublicRoutes.map((route, idx) => (
+            <Route key={idx} path={route.name} component={route.component} />
+          ))}
         </Switch>
       </Router>
     </div>

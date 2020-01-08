@@ -17,7 +17,9 @@ const Profile = () => {
         </div>
         <div className="card-profile__header">
           <div className="card-profile__title">
-            <h3 className="card-profile__nickname">{state.usernickname}</h3>
+            <h3 className="card-profile__nickname form-tittle">
+              {state.usernickname}
+            </h3>
             <p className="card-profile__description">{state.description}</p>
           </div>
         </div>

@@ -43,7 +43,22 @@ const firestoreActions = () => {
       });
   };
 
-  return [SetNewUser, LoginUpdateData];
+  // Set data si existe se actualiza, si no existe lo crea
+  const SetPost = (nickname, uid, post, date) => {
+    const newData = {
+      nickname: nickname,
+      uid: uid,
+      post: post,
+      date: date
+    };
+    const setDoc = firestore()
+      .collection("confesiones")
+      // si no le pasas parametro a .doc google genera Id unico
+      .doc()
+      .set(newData);
+  };
+
+  return [SetNewUser, LoginUpdateData, SetPost];
 };
 
 export default firestoreActions;

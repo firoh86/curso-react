@@ -7,8 +7,11 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import firestoreActions from "../../hooks/firebase/firestoreActions";
 // para redux
 import { useSelector } from "react-redux";
-
+// para actualizar tras post
+import { useHistory } from "react-router-dom";
 const PostFormulary = () => {
+  // hook de history, solo funciona con hooks
+  let history = useHistory();
   // para saber si el usuario esta logeado y extraer uid y nickname
   const state = useSelector(state => state);
   // hook de firestoreactions
@@ -27,13 +30,11 @@ const PostFormulary = () => {
       case "send":
         console.log("se envia la data");
         if (confesion.length > 30) {
-          let date = new Date();
-          let dateString = new Date(
-            date.getTime() - date.getTimezoneOffset() * 60000
-          )
-            .toISOString()
-            .split("T")[0];
-          SetPost(state.usernickname, state.userid, confesion, dateString);
+          var dt = new Date();
+          var utcDate = dt.toUTCString();
+          SetPost(state.usernickname, state.userid, confesion, utcDate);
+          // history push para actualizar la pagina
+          history.push("/");
         } else {
           alert("El post es demasiado corto, escribe algo más");
         }

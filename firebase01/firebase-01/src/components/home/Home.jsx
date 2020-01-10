@@ -3,12 +3,16 @@ import PostFormulary from "../elements/PostFormulary";
 import ConfessionCard from "../confessions/ConfessionCard";
 
 import { firestore } from "firebase";
+
 const Home = () => {
   const [listprops, setListProps] = useState();
+  const db = firestore();
+
   useEffect(() => {
     const list = [];
-    firestore()
-      .collection("confesiones")
+
+    db.collection("confesiones")
+      .orderBy("date", "desc")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -17,7 +21,7 @@ const Home = () => {
         });
         setListProps(list);
       });
-  }, []);
+  }, [db]);
 
   return (
     <div>

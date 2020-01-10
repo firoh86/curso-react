@@ -51,7 +51,7 @@ const firestoreActions = () => {
       post: post,
       date: date
     };
-    const setDoc = firestore()
+    firestore()
       .collection("confesiones")
       // si no le pasas parametro a .doc google genera Id unico
       .doc()

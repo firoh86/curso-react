@@ -6,23 +6,31 @@ import { firestore } from "firebase";
 
 const Home = () => {
   const [listprops, setListProps] = useState();
-
-  const db = firestore();
-
+  // actualiza los post en tiempo real desde firestore y sanea el efecto cortando la promesa si el componente se desmonta
   useEffect(() => {
+    let isSubscribed = true;
     let list = [];
-    db.collection("confesiones")
-      .orderBy("date", "desc")
+    const db = firestore().collection("confesiones");
+
+    db.orderBy("date", "desc")
       .get()
       .then(snapshot => {
-        snapshot.forEach(doc => {
-          const post = doc.data();
-          list.push(post);
-        });
-        setListProps(list);
+        if (isSubscribed) {
+          snapshot.forEach(doc => {
+            const post = doc.data();
+            list.push(post);
+          });
+          setListProps(list);
+        }
       })
-      .catch(error => console.log(error));
-  }, [db]);
+      .catch(error => {
+        if (isSubscribed) {
+          console.log(error);
+        }
+      });
+
+    return () => (isSubscribed = false);
+  }, [listprops]);
 
   return (
     <div>

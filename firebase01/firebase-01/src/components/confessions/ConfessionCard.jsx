@@ -3,7 +3,24 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-const confessionCard = props => {
+// para borrar con firestore
+import firestoreActions from "../../hooks/firebase/firestoreActions";
+
+// para redux
+import { useSelector } from "react-redux";
+
+const ConfessionCard = props => {
+  // para saber si el usuario coincide con el que envio el post
+  const state = useSelector(state => state);
+  const [, , , DeletePost] = firestoreActions();
+
+  const HandleClick = () => {
+    if (state.isloged) {
+      console.log("esta logeado he hizo click");
+      DeletePost(state.userid, props.data.post);
+    }
+  };
+
   return (
     <div className="post-card">
       <div className="form-block-vertical">
@@ -12,8 +29,8 @@ const confessionCard = props => {
             <p className="post-header-text">{props.data.nickname}</p>
             <p className="post-header-text">{props.data.date}</p>
           </div>
-
-          <button className=" post-button ">
+          {/* reportar post / borrar post propios */}
+          <button className=" post-button " onClick={() => HandleClick()}>
             <FontAwesomeIcon icon={faBars} size="1x" className="post__icon" />
           </button>
         </div>
@@ -24,4 +41,4 @@ const confessionCard = props => {
   );
 };
 
-export default confessionCard;
+export default ConfessionCard;

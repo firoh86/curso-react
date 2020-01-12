@@ -12,7 +12,8 @@ const DemoCrud = () => {
           /*  const datos = doc.data();
           console.log(datos); */
         });
-      });
+      })
+      .catch(error => console.log(error));
   };
   // Set data si existe se actualiza, si no existe lo crea
   const SettData = () => {
@@ -27,7 +28,8 @@ const DemoCrud = () => {
       .collection("users")
       // si no le pasas parametro a .doc google genera Id unico
       .doc("oepPeWXX4wv9bVgCXARU")
-      .set(newData);
+      .set(newData)
+      .catch(error => console.log(error));
   };
   const addData = () => {
     const addDoc = {
@@ -44,7 +46,8 @@ const DemoCrud = () => {
       .add(addDoc)
       .then(ref => {
         console.log(ref.id);
-      });
+      })
+      .catch(error => console.log(error));
   };
 
   const deleteData = id => {
@@ -52,7 +55,8 @@ const DemoCrud = () => {
       .collection("users")
       // siempre va a necesitar un id
       .doc(id)
-      .delete();
+      .delete()
+      .catch(error => console.log(error));
   };
 
   return (

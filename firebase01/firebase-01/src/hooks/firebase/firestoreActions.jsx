@@ -2,7 +2,7 @@ import { firestore } from "firebase";
 // para redux actions
 import Actions from "../../components/redux/Actions";
 
-const firestoreActions = () => {
+const FirestoreActions = () => {
   // actions de redux
   const [, logData] = Actions();
 
@@ -20,7 +20,8 @@ const firestoreActions = () => {
       .collection("users")
       // si no le pasas parametro a .doc google genera Id unico
       .doc(newData.uid)
-      .set(newData);
+      .set(newData)
+      .catch(error => console.log(error));
   };
 
   // actualizar state de redux con la info de firestore al logearse
@@ -40,7 +41,8 @@ const firestoreActions = () => {
           following: newProfileData.following
         };
         logData(newData);
-      });
+      })
+      .catch(error => console.log(error));
   };
 
   // Set data si existe se actualiza, si no existe lo crea
@@ -55,10 +57,43 @@ const firestoreActions = () => {
       .collection("confesiones")
       // si no le pasas parametro a .doc google genera Id unico
       .doc()
-      .set(newData);
+      .set(newData)
+      .catch(error => console.log(error));
   };
 
-  return [SetNewUser, LoginUpdateData, SetPost];
+  const DeletePost = (uid, post) => {
+    let deletepost = "";
+    firestore()
+      .collection("confesiones")
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          // console.log(doc.data());
+          const data = doc.data();
+          // console.log(`${uid} ${data.uid}`);
+          if (data.post === post && data.uid === uid) {
+            console.log("coincide post y uid");
+            deletepost = doc.id;
+            // console.log(deletepost);
+            DeleteData(deletepost);
+          }
+        });
+      })
+      .catch(error => console.log(error));
+
+    // si coincide guarda el doc id y lo muestra para luego borrarlo
+  };
+
+  const DeleteData = id => {
+    firestore()
+      .collection("confesiones")
+      // siempre va a necesitar un id
+      .doc(id)
+      .delete()
+      .catch(error => console.log(error));
+  };
+
+  return [SetNewUser, LoginUpdateData, SetPost, DeletePost];
 };
 
-export default firestoreActions;
+export default FirestoreActions;

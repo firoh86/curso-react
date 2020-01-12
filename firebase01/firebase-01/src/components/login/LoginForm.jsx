@@ -15,7 +15,7 @@ const LoginForm = ({ create }) => {
     reset();
   };
   return (
-    <div className="form-container  ">
+    <div className="form-container">
       <div className="form-card ">
         <form onSubmit={loginHandle}>
           <h3 className="form-tittle">log in</h3>

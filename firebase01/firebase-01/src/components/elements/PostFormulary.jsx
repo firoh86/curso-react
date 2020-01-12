@@ -5,13 +5,14 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 // para post en firestore
 import firestoreActions from "../../hooks/firebase/firestoreActions";
-// para redux
-import { useSelector } from "react-redux";
 // para actualizar tras post
 import { useHistory } from "react-router-dom";
+// para redux
+import { useSelector } from "react-redux";
 const PostFormulary = () => {
   // hook de history, solo funciona con hooks
   let history = useHistory();
+
   // para saber si el usuario esta logeado y extraer uid y nickname
   const state = useSelector(state => state);
   // hook de firestoreactions
@@ -42,6 +43,7 @@ const PostFormulary = () => {
       default:
         break;
     }
+
     setPostForm(postForm => !postForm);
   };
 

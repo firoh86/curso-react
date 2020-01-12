@@ -11,6 +11,7 @@ const Profile = () => {
 
   return (
     <div className="profile__container">
+      <h3 className="form-tittle header-top">Perfil</h3>
       <div className="card-profile">
         <div className="card-profile__image">
           <img src="" alt=""></img>

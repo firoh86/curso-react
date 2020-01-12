@@ -6,11 +6,11 @@ import { firestore } from "firebase";
 
 const Home = () => {
   const [listprops, setListProps] = useState();
+
   const db = firestore();
 
   useEffect(() => {
-    const list = [];
-
+    let list = [];
     db.collection("confesiones")
       .orderBy("date", "desc")
       .get()
@@ -20,7 +20,8 @@ const Home = () => {
           list.push(post);
         });
         setListProps(list);
-      });
+      })
+      .catch(error => console.log(error));
   }, [db]);
 
   return (

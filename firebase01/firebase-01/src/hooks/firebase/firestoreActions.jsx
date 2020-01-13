@@ -93,7 +93,17 @@ const FirestoreActions = () => {
       .catch(error => console.log(error));
   };
 
-  return [SetNewUser, LoginUpdateData, SetPost, DeletePost];
+  // actualizar informacion del perfil,nickname y descripcion
+  const UpdateProfileData = (uid, data) => {
+    firestore()
+      .collection("users")
+      .doc(uid)
+      .set(data)
+      .catch(error => console.log(error));
+    LoginUpdateData(uid);
+  };
+
+  return [SetNewUser, LoginUpdateData, SetPost, DeletePost, UpdateProfileData];
 };
 
 export default FirestoreActions;

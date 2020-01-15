@@ -13,14 +13,18 @@
 
   &__image {
     position: relative;
-    top: -4em;
+    top: -5em;
+    left: -2em;
     height: 4em;
+    width: 4em;
+    margin: 1em;
 
     & img {
-      min-width: 8em;
-      min-height: 8em;
+      height: 8em;
+      width: 8em;
+      min-width: 100%;
       background-color: aquamarine;
-      border-radius: 100%;
+      border-radius: 50%;
       box-shadow: 0 0 3px 1px $shadow-color;
     }
   }

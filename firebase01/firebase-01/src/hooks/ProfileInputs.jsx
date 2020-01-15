@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const ProfileInputs = initialValue => {
+const ProfileInputs = () => {
   // campos del formulario
-  const [nickname, setNickname] = useState(initialValue);
-  const [description, setDescription] = useState(initialValue);
+  const [nickname, setNickname] = useState();
+  const [description, setDescription] = useState();
 
   // actualizacion de los campos
   const bindNickname = {
@@ -19,8 +19,8 @@ const ProfileInputs = initialValue => {
     }
   };
   const reset = () => {
-    setNickname(initialValue);
-    setDescription(initialValue);
+    setNickname("");
+    setDescription("");
   };
 
   return [nickname, description, bindNickname, bindDescription, reset];

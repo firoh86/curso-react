@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import ProfileInputs from "../../hooks/ProfileInputs";
 
 import FirestoreActions from "../../hooks/firebase/firestoreActions";
-
 import FireStorage from "../../hooks/firebase/FireStorage";
 
 const Profile = () => {
@@ -28,11 +27,12 @@ const Profile = () => {
   const HandleProfileEdit = () => {
     console.log("Se esta editando el perfil");
     const newdata = {
-      nickname: nickname,
       description: description,
       likes: state.likes,
       followers: state.followers,
-      following: state.following
+      following: state.following,
+      nickname: nickname,
+      profilepic: state.profilepic
     };
     UpdateProfileData(state.userid, newdata);
     HandleEditmode();
@@ -47,7 +47,10 @@ const Profile = () => {
             {!editmode ? (
               <>
                 <div className="card-profile__image">
-                  <img src="" alt=""></img>
+                  <img
+                    src={state.profilepic}
+                    alt={`profilepic ${state.nickname}`}
+                  />
                 </div>
                 <h3 className="card-profile__nickname form-tittle">
                   {state.usernickname}
@@ -56,7 +59,7 @@ const Profile = () => {
               </>
             ) : (
               <>
-                <FireStorage />
+                <FireStorage state={state} />
                 <input
                   className="form-element"
                   {...bindNickname}

@@ -29,7 +29,7 @@ const FirebaseAuth = () => {
         userID = firebase.auth().currentUser.uid;
         // is loged para permitir navegar a vistas privadas
         logStatus(userID, true);
-        // console.log(userID);
+        // console.log(data);
 
         // actualiza el state desde info de firestore al logear
         LoginUpdateData(userID);

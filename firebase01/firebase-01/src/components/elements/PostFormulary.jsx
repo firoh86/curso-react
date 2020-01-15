@@ -33,7 +33,13 @@ const PostFormulary = () => {
         if (confesion.length > 30) {
           var dt = new Date();
           var utcDate = dt.toUTCString();
-          SetPost(state.usernickname, state.userid, confesion, utcDate);
+          SetPost(
+            state.usernickname,
+            state.userid,
+            confesion,
+            utcDate,
+            state.profilepic
+          );
           // history push para actualizar la pagina
           history.push("/");
         } else {

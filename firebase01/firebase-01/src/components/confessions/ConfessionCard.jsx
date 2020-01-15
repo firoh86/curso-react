@@ -41,6 +41,12 @@ const ConfessionCard = props => {
     <div className="post-card" onMouseLeave={() => HandleLeave()}>
       <div className="form-block-vertical">
         <div className="post-header">
+          <div className="post-pic-container ">
+            <img
+              src={props.data.profilepic}
+              alt={`profilepic ${props.data.nickname}`}
+            />
+          </div>
           <div className="post-header-block">
             <p className="post-header-text">{props.data.nickname}</p>
             <p className="post-header-text">{props.data.date}</p>

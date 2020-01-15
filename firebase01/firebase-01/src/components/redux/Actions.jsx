@@ -18,7 +18,8 @@ const Actions = () => {
       payload2: newData.description,
       payload3: newData.likes,
       payload4: newData.followers,
-      payload5: newData.following
+      payload5: newData.following,
+      payload6: newData.profilepic
     });
   };
   return [logStatus, logData];

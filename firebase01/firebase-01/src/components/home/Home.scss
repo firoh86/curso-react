@@ -6,14 +6,12 @@
   width: 80vw;
   padding: 15px;
 }
-/* .blurryBG {
-  filter: blur(8px);
-  -webkit-filter: blur(3px);
+.post-pic-container {
+  width: 40px;
+  height: 40px;
+
+  img {
+    border-radius: 50%;
+    max-width: 100%;
+  }
 }
-.cover-shadow {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
-}
- */

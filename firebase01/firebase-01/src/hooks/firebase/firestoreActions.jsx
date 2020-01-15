@@ -14,7 +14,8 @@ const FirestoreActions = () => {
       description: "Escribe aqui una breve descripción de ti",
       followers: 0,
       following: 0,
-      likes: 0
+      likes: 0,
+      profilepic: "images/avatar.jpg"
     };
     firestore()
       .collection("users")
@@ -34,11 +35,12 @@ const FirestoreActions = () => {
           .filter(data => data.id === uid)[0]
           .data();
         const newData = {
-          nickname: newProfileData.nickname,
           description: newProfileData.description,
           likes: newProfileData.likes,
           followers: newProfileData.followers,
-          following: newProfileData.following
+          following: newProfileData.following,
+          nickname: newProfileData.nickname,
+          profilepic: newProfileData.profilepic
         };
         logData(newData);
       })
@@ -46,12 +48,13 @@ const FirestoreActions = () => {
   };
 
   // Set data si existe se actualiza, si no existe lo crea
-  const SetPost = (nickname, uid, post, date) => {
+  const SetPost = (nickname, uid, post, date, profilepic) => {
     const newData = {
       nickname: nickname,
       uid: uid,
       post: post,
-      date: date
+      date: date,
+      profilepic: profilepic
     };
     firestore()
       .collection("confesiones")

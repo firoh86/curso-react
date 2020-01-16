@@ -40,6 +40,7 @@ const PostFormulary = () => {
             utcDate,
             state.profilepic
           );
+
           // history push para actualizar la pagina
           history.push("/");
         } else {

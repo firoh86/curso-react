@@ -47,21 +47,23 @@ const FirestoreActions = () => {
       .catch(error => console.log(error));
   };
 
-  // Set data si existe se actualiza, si no existe lo crea
+  // Set data si existe se actualiza, si no existe lo crea y devuelve el doc ID
   const SetPost = (nickname, uid, post, date, profilepic) => {
+    // si no le pasas parametro a .doc google genera Id unico
+    const postID = firestore()
+      .collection("confesiones")
+      .doc();
     const newData = {
       nickname: nickname,
       uid: uid,
       post: post,
       date: date,
-      profilepic: profilepic
+      profilepic: profilepic,
+      postID: postID
     };
-    firestore()
-      .collection("confesiones")
-      // si no le pasas parametro a .doc google genera Id unico
-      .doc()
-      .set(newData)
-      .catch(error => console.log(error));
+
+    postID.set(newData).catch(error => console.log(error));
+    return postID;
   };
 
   const DeletePost = (uid, post) => {

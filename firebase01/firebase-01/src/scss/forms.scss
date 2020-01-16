@@ -89,66 +89,7 @@ textarea {
   resize: none;
 }
 
-.post-button-container {
-  position: absolute;
-  bottom: 4em;
-  right: 2em;
-}
 .smalltext {
   color: $font-color;
   font-size: 0.8em;
-}
-
-// confeisones
-
-.post-card {
-  border-radius: 4px;
-  background-color: $forms-color;
-  box-shadow: 0 0 3px 1px $shadow-color;
-  margin: 1em;
-  max-width: 400px;
-}
-.post-header {
-  padding: 0 1em;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.post-header-block {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-}
-.post-header-text {
-  padding: 0 1em;
-  color: $font-color;
-}
-.post-button {
-  width: 30px;
-  height: 30px;
-  background-color: $boton-1;
-  border-radius: 4px;
-  font-weight: bold;
-  border: none;
-  color: $block-color;
-  padding: 0.2em;
-  font-weight: 600;
-  margin: 0.2em;
-  &:hover {
-    background-color: $boton-2;
-    transform: scale(0.95);
-  }
-}
-
-.home-post {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-}
-.header-top {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  color: $boton-2;
 }

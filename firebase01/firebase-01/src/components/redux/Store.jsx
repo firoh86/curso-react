@@ -9,7 +9,7 @@ const stateDefault = {
   followers: 0,
   following: 0,
   profilepic:
-    "https://firebasestorage.googleapis.com/v0/b/fir-01-a9c0c.appspot.com/o/images%2Favatar.jpg?alt=media&token=6eabfd12-26c9-4f72-839e-b8172d3d1b61"
+    "https://firebasestorage.googleapis.com/v0/b/confesiones-44c40.appspot.com/o/images%2Favatar.jpg?alt=media&token=b2fa4e3c-cfbc-46c6-bffb-75f8a7959479"
 };
 
 // (previousState,action)=>newState

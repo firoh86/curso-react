@@ -127,8 +127,8 @@ const ConfessionCard = props => {
               </div>
             </>
           )}
-          {/* <span className="tip tip-up"></span> */}
-          <button className=" button-show-comments purple">aa</button>
+
+          <button className=" button-show-comments ">comentar</button>
         </div>
       </div>
     </div>

@@ -4,48 +4,16 @@ import ConfessionCard from "../confessions/ConfessionCard";
 import { firestore } from "firebase";
 
 const Home = () => {
-  const db = firestore().collection("confesiones");
-
   // lista de confesiones/posts
   const [listprops, setListProps] = useState();
-
   //todos los comentarios para filtrar en los posts
-  // const [comments, setComments] = useState();
+  const [comments, setComments] = useState();
+
   // actualiza los post en tiempo real desde firestore y sanea el efecto cortando la promesa si el componente se desmonta
-
-  /*   const unsubscribe = useCallback(() => {
-    let list = [];
-    db.collection("confesiones")
-      .orderBy("date", "desc")
-      .onSnapshot(snapshot => {
-        snapshot.forEach(doc => {
-          const post = doc.data();
-          list.push(post);
-        });
-        setListProps(list);
-        console.log(list);
-        // list = [];
-      });
-  }, [db]);
-
-  const unsubscribe2 = useCallback(() => {
-    let list = [];
-    db.collection("comentarios").onSnapshot(snapshot => {
-      snapshot.forEach(doc => {
-        const comment = doc.data();
-        list.push(comment);
-      });
-
-      setComments(list);
-      console.log(list);
-      list = [];
-    });
-  
-  }, [db]); */
-
   useEffect(() => {
-    let list = {};
-    const test = firestore()
+    let comentlist = [];
+
+    const HandlePosts = firestore()
       .collection("confesiones")
       .orderBy("date", "desc")
       .onSnapshot(snapshot => {
@@ -54,10 +22,22 @@ const Home = () => {
         }));
 
         setListProps(everypost);
-        list = {};
       });
-    console.log(list);
-    return () => test();
+
+    const HandleComments = firestore()
+      .collection("comentarios")
+      .onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          comentlist.push(data);
+        });
+        setComments(comentlist);
+      });
+    comentlist = [];
+    return () => {
+      HandlePosts();
+      HandleComments();
+    };
   }, []);
 
   return (
@@ -65,14 +45,10 @@ const Home = () => {
       <h3 className="form-tittle header-top">Confesiones anónimas</h3>
       <div className="posts-Container ">
         {/* comprobar que ambos campos estan rellenos antes de crear la lista de posts */}
-        {/*     {listprops &&
+        {listprops &&
           comments &&
           listprops.map((item, idx) => (
             <ConfessionCard key={idx} data={item} comments={comments} />
-          ))} */}
-        {listprops &&
-          listprops.map((item, idx) => (
-            <ConfessionCard key={idx} data={item} />
           ))}
       </div>
       <PostFormulary />

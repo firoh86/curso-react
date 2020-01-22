@@ -65,7 +65,7 @@ const Profile = () => {
                   {...bindNickname}
                   type="text"
                   maxLength="12"
-                  placeholder={state.usernickname}
+                  placeholder={"nuevo nickname"}
                 ></input>
 
                 <input
@@ -73,7 +73,7 @@ const Profile = () => {
                   {...bindDescription}
                   type="text"
                   maxLength="120"
-                  placeholder={state.description}
+                  placeholder={"nueva descripción"}
                 ></input>
               </>
             )}

@@ -52,8 +52,9 @@ const Contact = () => {
               <h3 className="form-tittle">Contacto</h3>
               <div className="form-block-vertical">
                 <p className="smalltext">
-                  ¿Tienes problemas con algún usuario o has encontrado un bug?
+                  ¿Tienes problemas con algún usuario?
                 </p>
+                <p className="smalltext">¿Has encontrado un bug?</p>
                 <input
                   type="text"
                   placeholder="asunto del mensaje"

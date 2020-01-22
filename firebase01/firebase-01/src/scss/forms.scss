@@ -8,7 +8,7 @@
 .form-card {
   border-radius: 4px;
   background-color: $forms-color;
-  box-shadow: 0 0 3px 1px $shadow-color;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
   margin: 2em;
 }
 .form-tittle {
@@ -28,8 +28,9 @@
   display: flex;
   justify-content: space-around;
   align-content: center;
-  padding: 0.8em;
+  padding: 2px 4px;
   min-width: 100px;
+  width: 100%;
 }
 .form-block-vertical {
   box-sizing: content-box;
@@ -37,7 +38,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 0.4em;
+  padding: 2px 4px;
 }
 .form-element {
   box-sizing: content-box;
@@ -45,7 +46,7 @@
   margin: 0.4em;
   background-color: $block-color;
   color: $font-color;
-  box-shadow: 0 0 3px 1px $shadow-color;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   padding: 1em;
   border: none;

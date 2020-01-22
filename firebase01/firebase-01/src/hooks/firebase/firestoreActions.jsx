@@ -108,7 +108,23 @@ const FirestoreActions = () => {
     LoginUpdateData(uid);
   };
 
-  return [SetNewUser, LoginUpdateData, SetPost, DeletePost, UpdateProfileData];
+  // envia comentario en un post
+  const PostComment = (uid, data) => {
+    firestore()
+      .collection("comentarios")
+      .doc()
+      .set(data)
+      .catch(error => console.log(error));
+  };
+
+  return [
+    SetNewUser,
+    LoginUpdateData,
+    SetPost,
+    DeletePost,
+    UpdateProfileData,
+    PostComment
+  ];
 };
 
 export default FirestoreActions;

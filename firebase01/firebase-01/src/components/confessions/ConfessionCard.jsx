@@ -5,6 +5,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 
+import CommentsForm from "../comments/CommentsForm";
+
 // para borrar con firestore
 import firestoreActions from "../../hooks/firebase/firestoreActions";
 
@@ -44,7 +46,6 @@ const ConfessionCard = props => {
     }
   };
 
-  // console.log(props.data.postID.id);
   // console.log(props.comments);
 
   return (
@@ -101,6 +102,7 @@ const ConfessionCard = props => {
         </div>
         <div className="form-element">{props.data.post}</div>
         <div className="form-block-horizontal">
+          <div className="form-block-horizontal"></div>
           {!showcomments ? (
             <button
               className=" button-show-comments "
@@ -116,20 +118,20 @@ const ConfessionCard = props => {
               >
                 ◤
               </button>
-
-              <div>
-                {props.comments.map(
-                  (item, idx) =>
-                    item.commentID === props.data.postID.id && (
-                      <ConfessionComment key={idx} data={item} />
-                    )
-                )}
-              </div>
             </>
           )}
-
-          <button className=" button-show-comments ">comentar</button>
         </div>
+        {showcomments && (
+          <div>
+            {props.comments.map(
+              (item, idx) =>
+                item.commentID === props.data.postID.id && (
+                  <ConfessionComment key={idx} data={item} />
+                )
+            )}
+          </div>
+        )}
+        {state.isloged && <CommentsForm id={props.data.postID.id} />}
       </div>
     </div>
   );

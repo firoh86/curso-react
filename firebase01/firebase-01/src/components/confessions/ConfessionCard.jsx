@@ -66,7 +66,7 @@ const ConfessionCard = props => {
           </div>
           {state.isloged &&
             (!buttonPanel ? (
-              <>
+              <div className="post-buttons-container">
                 <button
                   className=" post-button "
                   onClick={() => Handlebuttonpanel()}
@@ -77,9 +77,9 @@ const ConfessionCard = props => {
                     className="post__icon"
                   />
                 </button>
-              </>
+              </div>
             ) : (
-              <div className="form-block-horizontal">
+              <div className="post-buttons-container">
                 <button className=" post-button " onClick={() => HandleBan()}>
                   <FontAwesomeIcon
                     icon={faBan}

@@ -14,9 +14,6 @@ const CommentsForm = props => {
   const [menssage, bindMenssage] = CommentInput();
 
   const state = useSelector(state => state);
-  // comentario id para el coment ID
-  // sin pasar id al doc
-  // y username que crea el comentario
 
   const HandleSend = () => {
     const commentPost = {

@@ -73,7 +73,7 @@ const Profile = () => {
                   {...bindDescription}
                   type="text"
                   maxLength="120"
-                  placeholder={"nueva descripción"}
+                  placeholder={state.description}
                 ></input>
               </>
             )}

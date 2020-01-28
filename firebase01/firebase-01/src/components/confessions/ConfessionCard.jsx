@@ -46,8 +46,6 @@ const ConfessionCard = props => {
     }
   };
 
-  // console.log(props.comments);
-
   return (
     <div className="post-card" onMouseLeave={() => HandleLeave()}>
       <div className="form-block-vertical">

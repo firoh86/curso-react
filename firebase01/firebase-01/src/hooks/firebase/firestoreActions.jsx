@@ -59,7 +59,7 @@ const FirestoreActions = () => {
       post: post,
       date: date,
       profilepic: profilepic,
-      postID: postID
+      postID: postID.id
     };
 
     postID.set(newData).catch(error => console.log(error));
@@ -67,6 +67,7 @@ const FirestoreActions = () => {
   };
 
   const DeletePost = (uid, post) => {
+    // Busca el post que conicide
     let deletepost = "";
     firestore()
       .collection("confesiones")
@@ -81,6 +82,7 @@ const FirestoreActions = () => {
             deletepost = doc.id;
             // console.log(deletepost);
             DeleteData(deletepost);
+            DeleteAllComments(deletepost);
           }
         });
       })
@@ -88,7 +90,7 @@ const FirestoreActions = () => {
 
     // si coincide guarda el doc id y lo muestra para luego borrarlo
   };
-
+  // borra el post que coincide
   const DeleteData = id => {
     firestore()
       .collection("confesiones")
@@ -97,7 +99,24 @@ const FirestoreActions = () => {
       .delete()
       .catch(error => console.log(error));
   };
-
+  // borra todos los comentarios de ese post
+  const DeleteAllComments = postid => {
+    console.log(postid);
+    firestore()
+      .collection("comentarios")
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          // console.log(doc.data());
+          const data = doc.data();
+          if (data.postID === postid) {
+            // console.log(data);
+            DeleteComment(data.commentID);
+          }
+        });
+      })
+      .catch(error => console.log(error));
+  };
   // actualizar informacion del perfil,nickname y descripcion
   const UpdateProfileData = (uid, data) => {
     firestore()
@@ -106,14 +125,76 @@ const FirestoreActions = () => {
       .set(data)
       .catch(error => console.log(error));
     LoginUpdateData(uid);
+    UpdatenicknameGlobal(uid, data.nickname);
+
+    // cambiar el nickname en todos los post y comentarios por el nuevo
   };
 
-  // envia comentario en un post
-  const PostComment = (uid, data) => {
+  // cambiar el nickname en todos los post y comentarios por el nuevo
+  const UpdatenicknameGlobal = (uid, newnickname) => {
+    firestore()
+      .collection("confesiones")
+      .onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const actualdoc = doc.ref.id;
+          if (data.uid === uid) {
+            firestore()
+              .collection("confesiones")
+              .doc(actualdoc)
+              .set({
+                ...data,
+                nickname: newnickname
+              })
+              .catch(error => console.log(error));
+          }
+        });
+      });
+
     firestore()
       .collection("comentarios")
-      .doc()
-      .set(data)
+      .onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const actualdoc = doc.ref.id;
+          if (data.uid === uid) {
+            firestore()
+              .collection("comentarios")
+              .doc(actualdoc)
+              .set({
+                ...data,
+                nickname: newnickname
+              })
+              .catch(error => console.log(error));
+          }
+        });
+      });
+  };
+  // envia comentario en un post
+  // comment = comentario
+  // Nickname = user nicknamenpm
+  // post ID = id del post al que pertenece
+  // comment ID = su propio ID
+  // uid = ID de usuario que lo postea
+  const PostComment = (uid, data) => {
+    const commentID = firestore()
+      .collection("comentarios")
+      .doc();
+    const newData = {
+      comment: data.comment,
+      nickname: data.nickname,
+      postID: uid,
+      commentID: commentID.id,
+      uid: data.uid
+    };
+    commentID.set(newData).catch(error => console.log(error));
+  };
+  const DeleteComment = id => {
+    firestore()
+      .collection("comentarios")
+      // siempre va a necesitar un id
+      .doc(id)
+      .delete()
       .catch(error => console.log(error));
   };
 
@@ -123,7 +204,8 @@ const FirestoreActions = () => {
     SetPost,
     DeletePost,
     UpdateProfileData,
-    PostComment
+    PostComment,
+    DeleteComment
   ];
 };
 

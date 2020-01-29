@@ -35,6 +35,7 @@ const Profile = () => {
       profilepic: state.profilepic
     };
     UpdateProfileData(state.userid, newdata);
+    // console.log(state.userid, newdata);
     HandleEditmode();
   };
 
@@ -49,7 +50,7 @@ const Profile = () => {
                 <div className="card-profile__image">
                   <img
                     src={state.profilepic}
-                    alt={`profilepic ${state.nickname}`}
+                    alt={`profilepic ${state.usernickname}`}
                   />
                 </div>
                 <h3 className="card-profile__nickname form-tittle">
@@ -65,7 +66,7 @@ const Profile = () => {
                   {...bindNickname}
                   type="text"
                   maxLength="12"
-                  placeholder={"nuevo nickname"}
+                  placeholder={state.usernickname}
                 ></input>
 
                 <input

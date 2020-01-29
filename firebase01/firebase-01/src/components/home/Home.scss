@@ -57,14 +57,14 @@
   border-radius: 4px;
   background-color: $block-color;
   display: flex;
-  justify-content: flex-start;
   color: $font-color;
-  min-width: 100%;
+  min-width: 90%;
 
   padding: 0.4em 0.2em;
   height: auto;
   & p {
     margin: 4px;
+    text-align: left;
   }
 }
 .post-nickname {

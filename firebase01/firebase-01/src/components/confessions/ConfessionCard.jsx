@@ -122,14 +122,15 @@ const ConfessionCard = props => {
         {showcomments && (
           <div>
             {props.comments.map(
-              (item, idx) =>
-                item.commentID === props.data.postID.id && (
-                  <ConfessionComment key={idx} data={item} />
+              // idx es la data, item la posicion en el array
+              (idx, item) =>
+                idx.postID === props.data.postID && (
+                  <ConfessionComment key={item} data={idx} />
                 )
             )}
           </div>
         )}
-        {state.isloged && <CommentsForm id={props.data.postID.id} />}
+        {state.isloged && <CommentsForm id={props.data.postID} />}
       </div>
     </div>
   );

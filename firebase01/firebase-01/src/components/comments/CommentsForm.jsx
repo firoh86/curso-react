@@ -16,16 +16,16 @@ const CommentsForm = props => {
   const state = useSelector(state => state);
 
   const HandleSend = () => {
-    const commentPost = {
+    const data = {
       comment: menssage,
-      commentID: props.id,
-      nickname: state.usernickname
+      nickname: state.usernickname,
+      uid: state.userid
     };
 
-    if (commentPost.comment.length < 30) {
+    if (data.comment.length < 30) {
       alert("El comentario debe tener al menos 30 carácteres.");
     } else {
-      PostComment(props.id, commentPost);
+      PostComment(props.id, data);
       alert("Se ha publicado su comentario");
       history.push("/");
     }

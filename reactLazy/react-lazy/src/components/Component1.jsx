@@ -1,4 +1,6 @@
 import React from "react";
-export const Component1 = () => {
-  return <div>Componente que se renderiza en primer lugar</div>;
+const Component1 = () => {
+  return <div>Este es el contenido del componente1</div>;
 };
+
+export default Component1;

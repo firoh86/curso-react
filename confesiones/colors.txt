@@ -1,0 +1,78 @@
+// colores de la pagina
+$forms-color: rgb(243, 243, 243);
+$base-color: #191c23;
+$block-color: #06070d;
+
+$boton-1: #284652;
+$boton-2: #3fd1d1;
+$font-color: #fff;
+$shadow-color: rgba(0, 0, 0, 0.3);
+$important-color: rgb(255, 209, 83);
+
+// animaciones de componentes
+// menus cabecera desplegables
+// animation: 0.15s slideInFromTop;
+@keyframes slideInFromTop {
+  0% {
+    // transform: scaleY(0);
+    transform: translateY(-50%) scaleY(0);
+  }
+  100% {
+    // transform: scaleY(1);
+
+    transform: translateY(0%) scaleY(1);
+  }
+}
+
+button:focus {
+  outline: 0;
+}
+a {
+  color: black;
+  text-decoration: none; /* no underline */
+}
+.button {
+  background-color: $boton-1;
+  border-radius: 4px;
+  font-weight: bold;
+  &:hover {
+    background-color: $boton-2;
+  }
+}
+
+// todo lo que este por encima del contenido de la pagina o lleve position fixed, debe
+// tener  z-index: 10; para que no se vean por debajo de otros contenidos
+
+// emojis colors
+$-like: #3871ec;
+$-angry: #ec3838;
+
+
+
+
+
+
+----------------------------------index
+
+@import "./colors.scss";
+@import "./components/header/header.scss";
+@import "./components/loginForm/loginForm.scss";
+@import "./components/home/home.scss";
+@import "./components/card/card.scss";
+@import "./components/profile/profile.scss";
+@import "./components/contact/contact.scss";
+@import "./components/about/about.scss";
+body {
+  margin: 0;
+  font-family: calibre, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: $base-color;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+

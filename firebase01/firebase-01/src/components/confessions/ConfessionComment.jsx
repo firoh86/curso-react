@@ -41,3 +41,4 @@ const ConfessionComment = props => {
 };
 
 export default ConfessionComment;
+

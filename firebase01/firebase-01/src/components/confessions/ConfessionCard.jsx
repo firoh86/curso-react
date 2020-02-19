@@ -45,7 +45,7 @@ const ConfessionCard = props => {
       setButtonPanel(buttonPanel => !buttonPanel);
     }
   };
-
+  console.log(props.comments.length);
   return (
     <div className="post-card" onMouseLeave={() => HandleLeave()}>
       <div className="form-block-vertical">
@@ -101,23 +101,25 @@ const ConfessionCard = props => {
         <div className="form-element">{props.data.post}</div>
         <div className="form-block-horizontal">
           <div className="form-block-horizontal"></div>
-          {!showcomments ? (
-            <button
-              className=" button-show-comments "
-              onClick={() => HandleShowComments()}
-            >
-              ◢
-            </button>
-          ) : (
-            <>
+
+          {props.comments.length > 0 &&
+            (!showcomments ? (
               <button
-                className=" button-show-comments purple"
+                className=" button-show-comments "
                 onClick={() => HandleShowComments()}
               >
-                ◤
+                {props.comments.length}◢
               </button>
-            </>
-          )}
+            ) : (
+              <>
+                <button
+                  className=" button-show-comments purple"
+                  onClick={() => HandleShowComments()}
+                >
+                  {props.comments.length}◤
+                </button>
+              </>
+            ))}
         </div>
         {showcomments && (
           <div>

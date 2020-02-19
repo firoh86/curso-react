@@ -6,12 +6,18 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import FirestoreActions from "../../hooks/firebase/firestoreActions";
 
+// para la redireccion forzada al home
+import { useHistory } from "react-router-dom";
+
 const ConfessionComment = props => {
+  const history = useHistory();
   const [, , , , , , DeleteComment] = FirestoreActions();
   const state = useSelector(state => state);
 
   const handleCommentDelete = () => {
     DeleteComment(props.data.commentID);
+    // todos los push history deben ir a una funcion externalizada
+    history.push("/");
   };
 
   return (
@@ -41,4 +47,3 @@ const ConfessionComment = props => {
 };
 
 export default ConfessionComment;
-

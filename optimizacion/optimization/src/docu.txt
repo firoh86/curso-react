@@ -1,0 +1,92 @@
+Una de los puntos más importantes que debemos tener en cuenta cuando desarrollamos aplicaciones web, es la optimización.
+Esto significa, que el usuario pueda responder lo más rápido posible.
+
+en cuestion, la velocidad con la que carga una página esta relacionada con la puntuación final, que dicha página recibirá y tendrá una mejor retención del usuario, lo que incrementará las posibilidades de convertir a ese usuario en un posible "cliente".
+
+Como sea, en este articulo quiero hablar sobre algunas de las herramientas que react nos provee "fuera del juego", y también un par de librerias que nos ayudaran a mejorar la performance de nuestra aplicación.
+¡Vamos a verlas!
+
+1.Lazy loading.
+
+elementos de carga asincronos es una de las más poderosas herramientas que podemos usar para mejorar la performance de nuestra página, En cuestión, estamos forzados a usarlo en cada una de las páginas web, esto hará que las imagenes del viewport sean cargadas conforme estén disponibles, lo que hará la carga inicial de la página, menos pesada.
+
+
+(Desde la versión 16.6 de React podemos usar React.Lazy para la carga asincrona de componentes combinado con "suspense"). Lo que nos permite cargar separadamente el código y solo carge en función de ser necesitado cafa vez.
+
+Para usar esta funcionalidad, simplemente encapsulamos el "import" dinámico de un componente con React.Lazy asi que podemos renunciar a el sin preocuparnos, ya que será cargado una vez que el servidor nos lo haya proveido:
+
+(code001)
+
+Esto incluso mejora si lo combinamos React.Lazy con "Suspense", un componente que nos permite most4rar un "fallback" mientras React.Lazy devuelve el componente desde el servidor, esto previene al usuario de ver partes vacias mientras carga.
+
+(code002)
+
+Como puedes ver, es una API muy simple de usar pero esto trae grandes beneficios a ambos, a nivel de interface y cuando se trata de mantener y reusar nuestro código. (desde que permite separar en partes pequeñas nuestro código, que usaremos gracias a React.Lazy).
+
+
+-------------------------------------------------------------------------
+
+2.React.memo and useMemo()
+
+dos funcciones "Hermanas" que React nos brinda para guardar en cache elementos de nuestra aplicación.
+
+en una mano, useMemo es un hook que nos permite cachear el resultado de una operación pesada. De este modo siempore tendremos un mísmo resultado siempre que sus dependencias no carguen.
+
+Imagina que tenemos el siguiente componente:
+
+(code003)
+
+Como puedes ver en la linea 8 nosotros pasamos la propiedad foo a la funcion DoHeavyWork para realizar un calculo pesado y obtener un valor (value).
+el problema reside en que si solo la propiedad bar cambia, realizaremos el mísmo cálculo pesado con foo, incluso si vamos a obtener el mísmo resultado.
+Gracias a useMemo podemos memorizar este resultado hasta que foo cambie.
+
+(code004)
+
+Gracias a esto solo correremos este cálculo pesado cuando la propiedad foo cambie.
+
+En la otra cara de la moneda, React.memo nos permite cachear componentes funcionales, asi que no rehara calculos si sus propiedades no han cambiado.
+(Un comportamiento muy similar a lo que conseguiriamos extendiendo un class component desde PureComponent).
+
+Por ejemplo, supón que tenemos el siguiente caso:
+
+(code005)
+
+gracias a React.Memo(MyComponent), React memorizará el componente y mientras sus propiedades no cambien, siempre devolverá el resultado que tiene en caché.
+
+----------------------------------------------------------------------------------------------------
+
+3.useCallback
+
+Y hablando de cachear cosas también tenemos el hook "useCallback" a nuestra disposición.
+
+Este hook, en cuestión, es una versión especifica de useMemo tal como está explicado en la documentación de React.
+
+useCallback(fn,deps) es equivalente a useMemo(()=>fn, deps).
+
+Y nos permite memorizar la declaración de una función, para evitar innecesarion re-renders causados por la creación de la mísma función una y otra vez. Vamos a verlo con un ejemplo:
+
+(code006)
+
+
+Como podemos ver en la linea 8, memorizamos el componente "Mycomponent", de la mísma forma que antes, pero ahora el problema es el siguiente. Cada vez que App se renderiza, estamos creando una nueva funcion onClick, para pasarla a "Mycomponent" así que al final eso hace lo mísmo, tendrán una referencia diferente y React.memo no podrá devolver el resultado que tenía en caché.(La comparación lo hace ser una referencia, no un valor).
+
+Aquí es donde nosotros podemos usar el hook "usecallback", lo que nos permitirá obtener la mísma función para la propiedad "onClick" una y otra vez siempre que sus dependencias no cambien:
+
+
+(code007)
+
+
+---------------------------------------
+check also reduxjs/reselect library
+
+"https://medium.com/@ger86/react-5-tricks-to-improve-the-performance-of-your-applications-be4df33348d5"
+
+which allows us to write “selectors” for our store that memorize the results. Thus, if, for example, we are obtaining a store value and applying a calculation upon retrieval, we can use the Reselect library to memorize the result of the calculation so that whenever the value does not change we obtain the same result without having to calculate it ( in the same way that the useMemo hook does).
+
+
+-------------------------------------------
+
+check also Virtualizaed list a react library to upload the list in fact of needed, and lazy load from vanilla js
+
+
+

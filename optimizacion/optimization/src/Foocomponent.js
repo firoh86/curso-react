@@ -1,2 +1,2 @@
 // Foo Component.js
-export default () => <div>Hello world!</div>;
+/* export default () => <div>Hello world!</div>; */

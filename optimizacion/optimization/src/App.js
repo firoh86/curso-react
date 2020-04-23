@@ -129,3 +129,11 @@ const app = () => {
   return <MemorizedMycomponent onClick={onClick} value={count} />;
 };
  */
+import React from "react";
+const App = () => {
+  // let a = new Date().getFullYear().toString();
+  return <h3>{new Date().getFullYear().toString()}</h3>;
+};
+
+export default App;
+console.log();
